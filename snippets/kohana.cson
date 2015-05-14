@@ -1,0 +1,225 @@
+".source.php":
+  "$this->":
+    prefix: "t"
+    body: "$this->${1}"
+  "Array Extract":
+    prefix: "arrextract"
+    body: "$${1:extracted} = Arr::extract($${2:array}, $${3:keys});"
+  "Array Is Associative":
+    prefix: "arrassoc"
+    body: "Arr::is_assoc(${1:array})"
+  "Array Merge":
+    prefix: "arrmerge"
+    body: "$${1:array} = Arr::merge(${2:$1}, $${3:array});"
+  "Array Unshift":
+    prefix: "arrunshift"
+    body: "$${1:array} = Arr::unshift(${2:$1}, $${3:key}, $${4:value});"
+  "Cache Get":
+    prefix: "cacheget"
+    body: "$${1:cache} = Kohana::cache(${2:name});"
+  "Cache Set":
+    prefix: "cacheset"
+    body: "Kohana::cache(${1:name}, $${2:data});"
+  "Cookie Delete":
+    prefix: "cookieget"
+    body: "Cookie::delete(${1:name});"
+  "Cookie Get":
+    prefix: "cookieget"
+    body: "$${1:value} = Cookie::get(${2:name});"
+  "Cookie Set":
+    prefix: "cookieget"
+    body: "Cookie::set(${1:name}, ${2:value});"
+  "Create Codebench Library":
+    prefix: "clibrary"
+    body: '''
+      class Bench_${1:Name} extends Codebench {
+      
+      	public $description = '$2';
+      	public $loops = ${3:10000};
+      	public $subjects = array
+      	(
+      		$4
+      	);
+      
+      	${0:// "cbench" tab trigger to create a new bench method}
+      
+      } // End Bench_$1
+    '''
+  "Create Codebench Method":
+    prefix: "cbench"
+    body: '''
+      public function bench_${1:name}($subject)
+      {
+      	${2:preg_match('${3:~$4~$5}', $subject, $matches);
+      	return $matches;}
+      }
+    '''
+  "Create Controller Action":
+    prefix: "action"
+    body: '''
+      public function action_${1:index}(${2})
+      {
+      	${3}
+      }
+    '''
+  "Create Controller":
+    prefix: "ccontroller"
+    body: '''
+      class Controller_${1:Name} extends Controller${2} {
+      
+      	public function action_index()
+      	{
+      		$this->template->title = "${3}";
+      		$this->template->tartalom = ${4};
+      	}
+      
+      } // End ${4:$1}
+      
+    '''
+  "Create Library":
+    prefix: "clibrary"
+    body: '''
+      class ${1:Class}${2: extends ${3:Class}} {
+      
+      	public function __construct(${4})
+      	{
+      		${5}
+      	}
+      
+      } // End ${6:$1}
+      
+    '''
+  "Create Model":
+    prefix: "cmodel"
+    body: '''
+      class Model_${1:Name} extends ${2:Model} {
+      
+      	${3}
+      
+      } // End ${4:$1}
+      
+    '''
+  "Create View":
+    prefix: "cview"
+    body: '''
+      class View_${1:Name} extends ${2:View} {
+      
+      	${3}
+      
+      } // End ${4:$1}
+      
+    '''
+  DIRECTORY_SEPARATOR:
+    prefix: "ds"
+    body: "DIRECTORY_SEPARATOR"
+  "Database Delete":
+    prefix: "delete"
+    body: "DB::delete(${1:table})"
+  "Database Insert":
+    prefix: "insert"
+    body: "DB::insert(${1:table}, ${2:columns})"
+  "Database Instance":
+    prefix: "database"
+    body: "Database::instance(${1:name})"
+  "Database Select":
+    prefix: "select"
+    body: "DB::select(${1:columns})"
+  "Database Update":
+    prefix: "update"
+    body: "DB::update(${1:table})"
+  "Date Fuzzy Span":
+    prefix: "datefuzzy"
+    body: "$${1:seconds} = Date::fuzzy_span($${2:timestamp});"
+  "Date Offset":
+    prefix: "dateoffset"
+    body: "$${1:seconds} = Date::offset(${2:remote timezone}${3:, ${4:local timezone}});"
+  "Date Span":
+    prefix: "datespan"
+    body: "$${1:seconds} = Date::span($${2:timestamp}, $${3:timestamp});"
+  "Debug Variable":
+    prefix: "debug"
+    body: "echo Kohana::debug(${1});"
+  "Encrypt Instance":
+    prefix: "encrypt"
+    body: "Encrypt::instance(${1:name})"
+  "ORM Factory":
+    prefix: "orm"
+    body: "ORM::factory('${1}')"
+  "PHP Benchmark":
+    prefix: "bench"
+    body: '''
+      $start = microtime(TRUE);
+      for ($i = 0, $max = 10000; $i < $max; $i++)
+      {
+      	${1}
+      }
+      echo "Benchmark took ", number_format(microtime(TRUE) - $start, 6), "seconds\\n\\n";
+    '''
+  "Validate Factory":
+    prefix: "validate"
+    body: "Validate::factory(${1})"
+  "View Factory":
+    prefix: "view"
+    body: "View::factory(${1})"
+".text.html":
+  "Form Button":
+    prefix: "formbutton"
+    body: "<?php echo Form::button(${1:name}, ${2:body}{$3:, ${4:attributes}}) ?>"
+  "Form Checkbox":
+    prefix: "formcheckbox"
+    body: "<?php echo Form::checkbox(${1:name}, ${2:value}) ?>"
+  "Form Close":
+    prefix: "formclose"
+    body: "<?php echo Form::close() ?>"
+  "Form File":
+    prefix: "formfile"
+    body: "<?php echo Form::file(${1:name}) ?>"
+  "Form Hidden":
+    prefix: "formhidden"
+    body: "<?php echo Form::hidden(${1:name}, ${2:value}) ?>"
+  "Form Input":
+    prefix: "forminput"
+    body: "<?php echo Form::input(${1:name}, ${2:value}) ?>"
+  "Form Label":
+    prefix: "formlabel"
+    body: "<?php echo Form::label(${1:input}, ${2:text}) ?>"
+  "Form Open":
+    prefix: "formopen"
+    body: "<?php echo Form::open(${1:uri}${2:, ${3:attributes}}) ?>"
+  "Form Radio":
+    prefix: "formradio"
+    body: "<?php echo Form::radio(${1:name}, ${2:value}) ?>"
+  "Form Select":
+    prefix: "formselect"
+    body: "<?php echo Form::select(${1:name}, ${2:options}, ${3:selected}) ?>"
+  "Form Submit":
+    prefix: "formsubmit"
+    body: "<?php echo Form::submit(${1:name}, ${2:text}) ?>"
+  "Form Textarea":
+    prefix: "formtextarea"
+    body: "<?php echo Form::textarea(${1:name}, ${2:body}) ?>"
+  "HTML Anchor":
+    prefix: "htmlanchor"
+    body: "<?php echo HTML::anchor(${1:link}, ${2:title}) ?>"
+  "HTML Image":
+    prefix: "htmlimage"
+    body: "<?php echo HTML::image(${1:image}, ${2:title}) ?>"
+  "HTML JavaScript":
+    prefix: "htmlscript"
+    body: "<?php echo HTML::script(${1}) ?>"
+  "HTML Mailto":
+    prefix: "htmlmailto"
+    body: "<?php echo HTML::mailto(${1}) ?>"
+  "HTML Stylesheet":
+    prefix: "htmlstyle"
+    body: "<?php echo HTML::style(${1}) ?>"
+  "Open Secure PHP File":
+    prefix: "pod"
+    body: '''
+      <?php defined('SYSPATH') or die('No direct script access.');
+      
+      
+    '''
+  "Profiler Stats":
+    prefix: "profiler"
+    body: "View::factory('profiler/stats')"

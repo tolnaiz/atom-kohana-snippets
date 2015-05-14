@@ -1,0 +1,10 @@
+{
+  "name": "kohana-snippets",
+  "version": "0.1.0",
+  "description": "Kohana 3 snippets converted from Textmate package (https://github.com/kohana/Kohana.tmbundle)",
+  "repository": "https://github.com/tolnaiz/atom-kohana-snippets.git",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  }
+}
